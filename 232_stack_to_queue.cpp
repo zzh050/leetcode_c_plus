@@ -58,7 +58,6 @@ public:
             return x;
         }
     }
-    
     bool empty() {
         if(s1.size()==0&&s2.size()==0){
             return true;
