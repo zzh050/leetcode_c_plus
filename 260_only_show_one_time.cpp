@@ -39,4 +39,39 @@ public:
         }
         return flag;
     }
+
+    /**
+ * @brief 
+ * 法二
+ * 先得到c=a^b
+ * a不等于b 且 c不等于0
+ * 所以看c中为为1的位有哪些
+ * 然后将数组中与c中为1的位的数异或 得到 a或者b
+ * 
+ */
+vector<int> singleNumber_2(vector<int>& nums) {
+    int length = nums.size();
+        int ab = 0;
+        vector<int> v;
+        for(int i=0;i<length;i++){
+            ab ^= nums[i];
+        }
+        int rightone=0;
+        if(ab==INT_MIN){
+            rightone = INT_MIN; //防止溢出
+        }else{
+            rightone = ab&(~ab+1);//提取最右的1
+        }
+        int onlyOne = 0;
+        for(int i=0;i<length;i++){
+            if((rightone&nums[i])==0)
+                onlyOne ^= nums[i];
+        }
+        v.push_back(onlyOne);
+        v.push_back(ab^onlyOne);
+        return v;
+        }
+
+    }
 };
+
