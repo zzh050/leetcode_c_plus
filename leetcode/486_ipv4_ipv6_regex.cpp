@@ -34,5 +34,4 @@ int main(){
     Solution s;
     string result = s.validIPAddress(t2);
     cout << result << endl;
-    
 }
