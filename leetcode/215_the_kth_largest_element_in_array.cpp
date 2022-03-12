@@ -8,7 +8,7 @@ using namespace std;
  * 排序输出 
  * 库函数排序
  * 其他排序方法 手动排序
- * 
+ * 选择排序 冒泡排序 插入排序
  * 
  */
 class Solution {
@@ -16,7 +16,8 @@ public:
     int findKthLargest(vector<int>& nums, int k) {
         //sort(nums.begin(),nums.end());
         //select_sort(nums);
-        bubble_sort(nums);
+        //bubble_sort(nums);
+        insert_sort(nums);
         return nums[nums.size()-k];
     }
 
@@ -48,6 +49,19 @@ public:
                     swap(nums,j,j+1);
                 }
                 
+            }
+        }
+    }
+
+    void insert_sort(vector<int>& nums){
+        
+        int length = nums.size();
+        if(length<2)
+        return;
+        for(int i=1;i<length;i++){
+            //第一个循环 0-i 有序
+            for(int j=i-1;j>=0&&nums[j]>nums[j+1];j--){
+                swap(nums, j, j+1);
             }
         }
     }
